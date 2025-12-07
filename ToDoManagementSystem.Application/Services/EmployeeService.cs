@@ -15,11 +15,13 @@ namespace ToDoManagementSystem.Application.Services
     {
         private readonly IEmployeeRepository _repo;
         private readonly IPasswordHasher _passwordHasher;
+        private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
-        public EmployeeService(IEmployeeRepository repo, IPasswordHasher passwordHasher)
+        public EmployeeService(IEmployeeRepository repo, IPasswordHasher passwordHasher, IJwtTokenGenerator jwtTokenGenerator)
         {
             _repo = repo;
             _passwordHasher = passwordHasher;
+            _jwtTokenGenerator = jwtTokenGenerator;
         }
 
         public async Task<EmployeeLoginResponseDTO> LoginEmployeeAsync(EmployeeLoginRequestDTO request)
@@ -34,12 +36,13 @@ namespace ToDoManagementSystem.Application.Services
             {
                 throw new Exception("Invalid Credintials");
             }
+            var jwtToken = _jwtTokenGenerator.GenerateJwtToken(existingEmployee.Id, existingEmployee.Email, existingEmployee.Name);
             var response = new EmployeeLoginResponseDTO
             {
                 Id = existingEmployee.Id,
                 Name = existingEmployee.Name,
                 Email = existingEmployee.Email,
-                Token = "test token"
+                Token = jwtToken
             };
             return response;
         }
