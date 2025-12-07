@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ToDoManagementSystem.Application.Interfaces.Services;
+using ToDoManagementSystem.Application.Services;
 
 namespace ToDoManagementSystem.Application
 {
@@ -6,6 +8,7 @@ namespace ToDoManagementSystem.Application
     {
         public static IServiceCollection AddApplicationDI (this IServiceCollection services)
         {
+            services.AddScoped<IEmployeeService, EmployeeService>();
             return services;
         }
     }
