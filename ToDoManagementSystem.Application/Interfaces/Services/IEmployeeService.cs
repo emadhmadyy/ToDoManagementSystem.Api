@@ -9,7 +9,7 @@ namespace ToDoManagementSystem.Application.Interfaces.Services
 {
     public interface IEmployeeService
     {
-        Task<EmployeeRegisterResponseDTO> RegisterEmployee(EmployeeRegisterRequestDTO request);
-        Task<EmployeeLoginRequestDTO> LoginEmployee(EmployeeLoginRequestDTO request);
+        Task<EmployeeRegisterResponseDTO> RegisterEmployeeAsync(EmployeeRegisterRequestDTO request);
+        Task<EmployeeLoginRequestDTO> LoginEmployeeAsync(EmployeeLoginRequestDTO request);
     }
 }
