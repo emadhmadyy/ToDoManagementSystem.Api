@@ -9,7 +9,8 @@ namespace ToDoManagementSystem.Application.Interfaces.Repositories
 {
     public interface IEmployeeRepository
     {
-        Task<Employee> GetByIdAsync(string EmployeeId);
+        Task<Employee> GetByIdAsync(string employeeId);
+        Task<Employee> GetByEmailAsync(string employeeEmail);
         Task CreateEmployee(Employee employee);
         Task UpdateEmployee(Employee employee);
     }
