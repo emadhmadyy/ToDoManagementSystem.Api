@@ -11,7 +11,7 @@ namespace ToDoManagementSystem.Application.Interfaces.Repositories
     {
         Task<Employee> GetByIdAsync(string employeeId);
         Task<Employee> GetByEmailAsync(string employeeEmail);
-        Task CreateEmployee(Employee employee);
-        Task UpdateEmployee(Employee employee);
+        Task CreateEmployeeAsync(Employee employee);
+        Task UpdateEmployeeAsync(Employee employee);
     }
 }
