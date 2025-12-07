@@ -14,6 +14,6 @@ namespace ToDoManagementSystem.Core.Entities
         public string Password { get; set; } = null!;
         public List<Todo> Todos { get; set; } = [];
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set;
+        public DateTime UpdatedAt { get; set; }
     }
 }
