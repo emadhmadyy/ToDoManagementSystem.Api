@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using ToDoManagementSystem.Application.Interfaces.Repositories;
 using ToDoManagementSystem.Application.Interfaces.Security;
 using ToDoManagementSystem.Infrastructure.Configuration;
+using ToDoManagementSystem.Infrastructure.Mongo;
 using ToDoManagementSystem.Infrastructure.Repositories;
 using ToDoManagementSystem.Infrastructure.Security;
 
@@ -16,6 +17,7 @@ namespace ToDoManagementSystem.Infrastructure
             services.AddSingleton<IPasswordHasher, BCryptPasswordHasher>();
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+            MongoDbClassMappings.Register();
             services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
             services.AddSingleton<IMongoClient>(sp =>
             {
