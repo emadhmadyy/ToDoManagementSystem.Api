@@ -13,5 +13,7 @@ namespace ToDoManagementSystem.Core.Entities
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
         public List<Todo> Todos { get; set; } = [];
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set;
     }
 }

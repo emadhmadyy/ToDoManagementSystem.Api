@@ -15,6 +15,8 @@ namespace ToDoManagementSystem.Core.Entities
         public DateTime DueDate { get; set; }
         public int Priority { get; set; }
         public TodoStatus Status { get; set; } = TodoStatus.Pending;
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
     }
 }
