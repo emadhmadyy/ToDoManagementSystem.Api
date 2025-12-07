@@ -5,6 +5,12 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManagementSystem.Api", "ToDoManagementSystem.Api\ToDoManagementSystem.Api.csproj", "{78503334-D339-4173-8543-59BF1BECB6CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManagementSystem.Core", "ToDoManagementSystem.Core\ToDoManagementSystem.Core.csproj", "{6935CB3B-98DF-4B67-AB87-275D34453491}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManagementSystem.Application", "ToDoManagementSystem.Application\ToDoManagementSystem.Application.csproj", "{294097AD-BC46-42E4-9331-907CD48A94AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManagementSystem.Infrastructure", "ToDoManagementSystem.Infrastructure\ToDoManagementSystem.Infrastructure.csproj", "{8CEB170A-FAAD-4098-9891-37C4744834F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{78503334-D339-4173-8543-59BF1BECB6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78503334-D339-4173-8543-59BF1BECB6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78503334-D339-4173-8543-59BF1BECB6CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6935CB3B-98DF-4B67-AB87-275D34453491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6935CB3B-98DF-4B67-AB87-275D34453491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6935CB3B-98DF-4B67-AB87-275D34453491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6935CB3B-98DF-4B67-AB87-275D34453491}.Release|Any CPU.Build.0 = Release|Any CPU
+		{294097AD-BC46-42E4-9331-907CD48A94AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{294097AD-BC46-42E4-9331-907CD48A94AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{294097AD-BC46-42E4-9331-907CD48A94AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{294097AD-BC46-42E4-9331-907CD48A94AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CEB170A-FAAD-4098-9891-37C4744834F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CEB170A-FAAD-4098-9891-37C4744834F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CEB170A-FAAD-4098-9891-37C4744834F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CEB170A-FAAD-4098-9891-37C4744834F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
