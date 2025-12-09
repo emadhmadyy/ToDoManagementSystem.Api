@@ -9,6 +9,7 @@ namespace ToDoManagementSystem.Application
         public static IServiceCollection AddApplicationDI (this IServiceCollection services)
         {
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<ITodoService, TodoService>();
             return services;
         }
     }
