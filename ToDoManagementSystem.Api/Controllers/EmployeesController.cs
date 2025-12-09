@@ -5,7 +5,7 @@ using ToDoManagementSystem.Application.Interfaces.Services;
 namespace ToDoManagementSystem.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("auth")]
     public class EmployeesController: ControllerBase
     {
         private readonly IEmployeeService _employeeService;
