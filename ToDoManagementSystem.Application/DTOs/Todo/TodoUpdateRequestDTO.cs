@@ -11,7 +11,7 @@ namespace ToDoManagementSystem.Application.DTOs.Todo
     {
         public string? Title { get; set; }
         public string? Description { get; set; }
-        public DateTime? DueDate { get; set; }
+        public string? DueDate { get; set; }
         public int? Priority { get; set; }
         public TodoStatus? Status { get; set; } 
     }

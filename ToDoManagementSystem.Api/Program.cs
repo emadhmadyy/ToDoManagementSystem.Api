@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using ToDoManagementSystem.Api;
 using System.IdentityModel.Tokens.Jwt;
+using ToDoManagementSystem.Api.Middlewares;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using ToDoManagementSystem.Application.Common;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<ApplicationAssemblyReference>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddAppDI(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
@@ -76,6 +82,9 @@ builder.Services.AddAuthentication(options =>
 
 
 var app = builder.Build();
+
+// This comes first
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

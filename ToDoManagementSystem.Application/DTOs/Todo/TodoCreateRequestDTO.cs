@@ -10,7 +10,7 @@ namespace ToDoManagementSystem.Application.DTOs.Todo
     {
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
-        public DateTime DueDate { get; set; }
+        public string DueDate { get; set; } = null!;
         public int Priority { get; set; }
     }
 }
