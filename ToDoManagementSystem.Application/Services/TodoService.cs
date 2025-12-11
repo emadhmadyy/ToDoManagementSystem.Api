@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 using ToDoManagementSystem.Application.DTOs.Todo;
 using ToDoManagementSystem.Application.Interfaces.Repositories;
 using ToDoManagementSystem.Application.Interfaces.Services;
@@ -22,13 +23,14 @@ namespace ToDoManagementSystem.Application.Services
             var existingEmployee = await _repo.GetByIdAsync(employeeId);
             if (existingEmployee == null)
             {
-                throw new Exception("Employee doesn't exist");
+                throw new HttpStatusException(404, "Employee doesn't exist");
             }
             var todo = new Todo
             {
+                Id = Guid.NewGuid().ToString(),
                 Title = request.Title,
                 Description = request.Description,
-                DueDate = request.DueDate,
+                DueDate = DateTime.Parse(request.DueDate),
                 Priority = request.Priority,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt= DateTime.UtcNow,
@@ -52,13 +54,13 @@ namespace ToDoManagementSystem.Application.Services
             var existingEmployee = await _repo.GetByIdAsync(employeeId);
             if (existingEmployee == null)
             {
-                throw new Exception("Employee doesn't exist");
+               throw new HttpStatusException(404, "Employee doesn't exist");
             }
             var todos = existingEmployee.Todos;
             var todo = todos.FirstOrDefault(t => t.Id == todoId);
             if (todo == null)
             {
-                throw new Exception("Todo doesn't exist");
+               throw new HttpStatusException(404, "Todo doesn't exist");
             }
             await _repo.DeleteEmployeeTodoAsync(employeeId, todoId);
         }
@@ -68,7 +70,7 @@ namespace ToDoManagementSystem.Application.Services
             var existingEmployee = await _repo.GetByIdAsync(employeeId);
             if (existingEmployee == null)
             {
-                throw new Exception("employee doesn't exist");
+                throw new HttpStatusException(404, "Employee doesn't exist");
             }
             var todos = existingEmployee.Todos;
             if(todos == null)
@@ -93,17 +95,22 @@ namespace ToDoManagementSystem.Application.Services
             var existingEmployee = await _repo.GetByIdAsync(employeeId);
             if(existingEmployee == null)
             {
-                throw new Exception("Employee doesn't exist");
+                throw new HttpStatusException(404, "Employee doesn't exist");
             }
             var todos = existingEmployee.Todos;
             var todo = todos.FirstOrDefault(t => t.Id == todoId);
+            DateTime? dueDate = null;
+            if (!string.IsNullOrWhiteSpace(request.DueDate))
+            {
+                dueDate = DateTime.Parse(request.DueDate); // safe if validated already
+            }
             if (todo == null)
             {
-                throw new Exception("todo doesn't exist");
+                throw new HttpStatusException(404, "Todo doesn't exist");
             }
             todo.Title = request.Title ?? todo.Title;
             todo.Description = request.Description ?? todo.Description;
-            todo.DueDate = request.DueDate ?? todo.DueDate;
+            todo.DueDate = dueDate ?? todo.DueDate;
             todo.Priority = request.Priority ?? todo.Priority;
             todo.Status = request.Status ?? todo.Status;
             todo.UpdatedAt = DateTime.UtcNow;

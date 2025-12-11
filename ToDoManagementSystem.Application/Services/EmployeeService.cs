@@ -29,12 +29,12 @@ namespace ToDoManagementSystem.Application.Services
             var existingEmployee = await _repo.GetByEmailAsync(request.Email);
             if (existingEmployee == null)
             {
-                throw new Exception("Employee with this email doesn't exist");
+                throw new HttpStatusException(404,"Employee with this email doesn't exist");
             }
             bool isPasswordVerified = _passwordHasher.VerifyPassword(request.Password, existingEmployee.Password);
             if (!isPasswordVerified)
             {
-                throw new Exception("Invalid Credintials");
+                throw new HttpStatusException(400, "Invalid Credintials");
             }
             var jwtToken = _jwtTokenGenerator.GenerateJwtToken(existingEmployee.Id, existingEmployee.Email, existingEmployee.Name);
             var response = new EmployeeLoginResponseDTO
@@ -52,7 +52,7 @@ namespace ToDoManagementSystem.Application.Services
             var existingEmployee = await _repo.GetByEmailAsync(request.Email);
             if (existingEmployee != null)
             {
-                throw new Exception("Employee with this email already exists");
+                throw new HttpStatusException(404,"Employee with this email doesn't exist");
             }
             var hashedPassword = _passwordHasher.HashPassword(request.Password);
             var employee = new Employee
