@@ -21,18 +21,6 @@ namespace ToDoManagementSystem.Infrastructure.Mongo
                       .SetSerializer(new StringSerializer(BsonType.ObjectId));
                 });
             }
-
-            // Todo mapping (nested or separate)
-            if (!BsonClassMap.IsClassMapRegistered(typeof(Todo)))
-            {
-                BsonClassMap.RegisterClassMap<Todo>(cm =>
-                {
-                    cm.AutoMap();
-                    cm.MapIdProperty(t => t.Id)
-                      .SetIdGenerator(StringObjectIdGenerator.Instance)
-                      .SetSerializer(new StringSerializer(BsonType.ObjectId));
-                });
-            }
         }
 
     }
