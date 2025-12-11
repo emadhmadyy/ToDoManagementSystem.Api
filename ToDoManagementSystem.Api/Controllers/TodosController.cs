@@ -65,18 +65,18 @@ namespace ToDoManagementSystem.Api.Controllers
         }
 
         [HttpDelete("delete/{todoId}")]
-        public Task<IActionResult> DeleteTodo([FromRoute] string todoId)
+        public async Task<IActionResult> DeleteTodo([FromRoute] string todoId)
         {
             var employeeId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (employeeId == null)
             {
                 return Unauthorized();
             }
-            var deleted = await _todoService.DeleteTodoAsync(employeeId, todoId);
-            if (!deleted)
-                return NotFound();
 
-            return NoContent(); // 204, deletion succeeded
+            await _todoService.DeleteTodoAsync(employeeId, todoId);
+
+            return NoContent();
         }
+
     }
 }
