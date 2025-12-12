@@ -39,9 +39,7 @@ namespace ToDoManagementSystem.Application.Services
             var jwtToken = _jwtTokenGenerator.GenerateJwtToken(existingEmployee.Id, existingEmployee.Email, existingEmployee.Name);
             var response = new EmployeeLoginResponseDTO
             {
-                Id = existingEmployee.Id,
                 Name = existingEmployee.Name,
-                Email = existingEmployee.Email,
                 Token = jwtToken
             };
             return response;
